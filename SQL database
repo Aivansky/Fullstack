@@ -1,0 +1,34 @@
+-- Cars Table
+CREATE TABLE Cars (
+    CarID INT AUTO_INCREMENT PRIMARY KEY, -- Unique identifier for each car
+    Make VARCHAR(50) NOT NULL,           -- Car make (e.g., Toyota, Honda)
+    Model VARCHAR(50) NOT NULL,          -- Car model (e.g., Corolla, Civic)
+    Year INT NOT NULL,                   -- Year of manufacture
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Timestamp for record creation
+);
+
+-- Index for efficient searching by make
+CREATE INDEX idx_cars_make ON Cars(Make);
+
+Add cars
+
+INSERT INTO Cars (Make, Model, Year)
+VALUES ('Toyota', 'Camry', 2020);
+
+Retrieve All Cars:
+
+sql
+Copy code
+SELECT * FROM Cars;
+
+Search Cars by Make:
+
+sql
+Copy code
+SELECT * FROM Cars WHERE Make = 'Toyota';
+
+Delete a Car by ID:
+
+sql
+Copy code
+DELETE FROM Cars WHERE CarID = 1;
