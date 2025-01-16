@@ -1,0 +1,36 @@
+const { Builder, By, until } = require('selenium-webdriver');
+
+(async function testLogin() {
+  // Launch a new browser session
+  let driver = await new Builder().forBrowser('chrome').build();
+
+  try {
+    // Navigate to the login page
+    await driver.get('https://example.com/login'); // Replace with your URL
+
+    // Locate the username and password fields and enter credentials
+    await driver.findElement(By.id('username')).sendKeys('your-username'); // Replace with the actual ID and username
+    await driver.findElement(By.id('password')).sendKeys('your-password'); // Replace with the actual ID and password
+
+    // Click the login button
+    await driver.findElement(By.id('loginButton')).click(); // Replace with the actual ID or locator of the login button
+
+    // Wait for the page to load and verify successful login
+    await driver.wait(until.titleIs('Dashboard'), 10000); // Replace 'Dashboard' with the expected title after login
+
+    console.log('Login successful!');
+  } catch (error) {
+    console.error('Login test failed:', error);
+  } finally {
+    // Quit the browser
+    await driver.quit();
+  }
+})();
+
+//install selenium npm install selenium-webdriver
+// run with Save this file (e.g., testLogin.js) and run it with Node.js:
+
+//bash
+//Copy
+//Edit
+//node testLogin.js
