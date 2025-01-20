@@ -1,0 +1,29 @@
+import java.awt.Robot;
+import java.awt.event.InputEvent;
+
+public class MouseClickMacro {
+    public static void main(String[] args) {
+        try {
+            // Create an instance of Robot
+            Robot robot = new Robot();
+
+            // Specify the coordinates where the mouse click will happen
+            int x = 500; // X-coordinate
+            int y = 300; // Y-coordinate
+
+            // Move the mouse to the specified location
+            robot.mouseMove(x, y);
+
+            // Simulate a left mouse button press and release
+            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+
+            System.out.println("Mouse click performed at (" + x + ", " + y + ")");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+//compile bash javac MouseClickMacro.java
+//run bash java MouseClickMacro
